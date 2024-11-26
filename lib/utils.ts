@@ -90,7 +90,7 @@ export const debounce = <T extends (...args: any[]) => void>(func: T, delay: num
 
   return (...args: Parameters<T>) => {
     if (timeoutId) clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => func(...args), delay);
+    timeoutId = setTimeout(() => func.apply(null, args), delay);
   };
 };
 
@@ -138,16 +138,12 @@ export const download = (url: string, filename: string) => {
 };
 
 // DEEP MERGE OBJECTS
-// Define a recursive type for the objects being merged
-type DeepObject = {
-  [key: string]: DeepObject | any; // allows nested objects and any type values
-} | undefined | null;
-export const deepMergeObjects = (obj1: DeepObject, obj2: DeepObject) => {
+export const deepMergeObjects = (obj1: any, obj2: any) => {
   if(obj2 === null || obj2 === undefined) {
     return obj1;
   }
 
-  let output: DeepObject = { ...obj2 };
+  let output = { ...obj2 };
 
   for (let key in obj1) {
     if (obj1.hasOwnProperty(key)) {

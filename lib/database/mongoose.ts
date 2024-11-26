@@ -16,18 +16,13 @@ interface MongooseConnection{
 //hence the connection to the database is cashed
 
 // Extend the global object with a mongoose property of type MongooseConnection
-declare global {
-    var mongoose: MongooseConnection | undefined;
+let cached: MongooseConnection = (global as any).mongoose
+
+if(!cached) {
+  cached = (global as any).mongoose = { 
+    conn: null, promise: null 
   }
-  
-  let cached: MongooseConnection | undefined = global.mongoose;
-  
-  if (!cached) {
-    cached = global.mongoose = {
-      conn: null,
-      promise: null,
-    };
-  }
+}
 
 export const connectToDatabase = async () => {
     if(cached.conn) return cached.conn;
