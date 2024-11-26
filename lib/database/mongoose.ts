@@ -15,18 +15,19 @@ interface MongooseConnection{
 //established again and again.
 //hence the connection to the database is cashed
 
-declare global{
-    var mongoose: MongooseConnection;
-}
-
-let cached: MongooseConnection = global.mongoose
-
-if(!cached){
-    cached =global.mongoose = {
-        conn: null,
-        promise: null
+// Extend the global object with a mongoose property of type MongooseConnection
+declare global {
+    var mongoose: MongooseConnection | undefined;
+  }
+  
+  let cached: MongooseConnection | undefined = global.mongoose;
+  
+  if (!cached) {
+    cached = global.mongoose = {
+      conn: null,
+      promise: null,
     };
-}
+  }
 
 export const connectToDatabase = async () => {
     if(cached.conn) return cached.conn;
