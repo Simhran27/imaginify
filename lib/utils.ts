@@ -100,7 +100,7 @@ interface Image {
   width?: number;
   height?: number;
 }
-// GE IMAGE SIZE
+// GET IMAGE SIZE
 export type AspectRatioKey = keyof typeof aspectRatioOptions;
 export const getImageSize = (
   type: string,
