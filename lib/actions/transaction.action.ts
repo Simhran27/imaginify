@@ -7,8 +7,6 @@ import Transaction from "../database/models/transaction.model";
 import { updateCredits } from "./user.actions";
 
 export async function checkoutCredits(transaction: CheckoutTransactionParams) {
-    const dotenv = require("dotenv");
-    dotenv.config();
     const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY!);
 
     const amount = Number(transaction.amount) * 100;

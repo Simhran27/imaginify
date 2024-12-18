@@ -78,7 +78,7 @@ const Checkout = ({
       {isClient && (
         <div suppressHydrationWarning={true}>
           {/* Some dynamic content that might differ between client/server */}
-          <p>Client-side content: {new Date().toLocaleString()}</p>
+          {/* <p>Client-side content: {new Date().toLocaleString()}</p> */}
         </div>
       )}
     </form>
