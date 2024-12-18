@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React from 'react'
 import { CldImage, CldUploadWidget} from 'next-cloudinary'
@@ -9,6 +10,7 @@ import Image from 'next/image';
 
 type MediaUploaderProps={
     onValueChange: (value: string) => void,
+    
     setImage: React.Dispatch<any>;
     image: any,
     publicId: string,
@@ -23,9 +25,9 @@ const MediaUploader = ({
     type
   } : MediaUploaderProps) => {
     const {toast} = useToast()
-
+    
     const onUploadSuccessHandler = (result: any) => {
-
+        
         setImage((prevState: any) => ({
             ...prevState,
             publicId: result?.info?.public_id,

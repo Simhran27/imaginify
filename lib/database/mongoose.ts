@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import mongoose,{Mongoose} from'mongoose';
 
 const MONGODB_URL=process.env.MONGODB_URL;
@@ -16,9 +17,11 @@ interface MongooseConnection{
 //hence the connection to the database is cashed
 
 // Extend the global object with a mongoose property of type MongooseConnection
+
 let cached: MongooseConnection = (global as any).mongoose
 
 if(!cached) {
+  
   cached = (global as any).mongoose = { 
     conn: null, promise: null 
   }

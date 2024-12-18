@@ -138,7 +138,7 @@ export const navLinks = [
       type: "fill",
       title: "Generative Fill",
       subTitle: "Enhance an image's dimensions using AI outpainting",
-      config: { fillBackground: true },
+      config: {type:Object, fillBackground: true },
       icon: "stars.svg",
     },
     remove: {

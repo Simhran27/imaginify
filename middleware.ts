@@ -10,7 +10,7 @@ export const config = {
     '/(api|trpc)(.*)',
 
     // Public routes - Skip authentication for these routes
-    '/(api/webhooks/clerk|api/webhooks/stripe|/)'
+    //'/(api/webhooks/clerk|api/webhooks/stripe|/)'
 
   ],
 };

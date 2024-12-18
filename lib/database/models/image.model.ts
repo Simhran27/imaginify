@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Document, model, models, Schema } from "mongoose";
-import { string } from "zod";
+
 //import { ObjectId } from 'mongoose';
 
 export interface IImage extends Document{
@@ -40,7 +41,7 @@ const ImageSchema=new Schema({
 });
 
 //to turn the above schema into a model
-const Image=models?.Image || model('Image',ImageSchema);
+const Image=models?.Image || model("Image",ImageSchema);
 
 export default Image;
 
